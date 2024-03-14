@@ -14,3 +14,6 @@
   - [ ] Database Functions. [Docs](#)
   - [ ] Edge Functions [Docs](#)
 - [ ] File Storage. [Docs](#)
+- [ ] Push Notifications.
+  - [ ] Web Push. [Docs](#)
+  - [ ] Mobile Push. [Docs](#)
