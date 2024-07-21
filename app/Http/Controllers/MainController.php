@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 class MainController extends Controller
 {
     public function index()
     {
-        return view('main.index');
+        return Inertia::render('Home/Index');
     }
 }

@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        Inertia::setRootView('auth');
+    }
+
     public function login()
     {
-        return view('auth.login');
+        return Inertia::render('Auth/Login');
     }
 
     public function register()
     {
-        return view('auth.register');
+        return Inertia::render('Auth/Register');
     }
 
     public function forgetPassword()
     {
-        return view('auth.forget-password');
+        return Inertia::render('Auth/ForgetPassword');
     }
 }

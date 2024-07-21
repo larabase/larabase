@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>Sign In | Laradmin Template</title>
+    <title>{{ config('app.name') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Roland Edi">
@@ -21,20 +21,13 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('static/css/theme.min.css') }}">
 
-    @yield('styles')
+    @vite('resources/js/app.ts')
+    @inertiaHead
 </head>
 
 <body>
     <!-- container -->
-    <main class="container d-flex flex-column">
-        <div class="row align-items-center justify-content-center g-0 min-vh-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
-
-                @yield('content')
-
-            </div>
-        </div>
-    </main>
+    @inertia
 
     <!-- Libs JS -->
     <script src="{{ asset('static/libs/jquery/dist/jquery.min.js') }}"></script>
@@ -44,8 +37,6 @@
 
     <!-- Theme JS -->
     <script src="{{ asset('static/js/theme.min.js') }}"></script>
-
-    @yield('scripts')
 </body>
 
 </html>
