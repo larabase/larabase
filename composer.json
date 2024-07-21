@@ -1,13 +1,13 @@
 {
-  "name": "codivoire/geseco-next",
+  "name": "larabase/larabase",
   "type": "project",
   "description": "School Management System.",
   "version": "1.0.0",
-  "homepage": "https://geseco.codivoire.com",
+  "homepage": "https://larabase.codivoire.com",
   "authors": [
     {
       "name": "Roland Edi",
-      "email": "pWwKt@example.com"
+      "email": "rolandedi@codivoire.com"
     }
   ],
   "keywords": [
