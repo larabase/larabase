@@ -3,7 +3,7 @@
     <div class="navbar-custom navbar navbar-expand-lg">
       <div class="container-fluid px-0">
         <a class="navbar-brand d-block d-md-none" href="#">
-          <img :src="url('static/images/brand/logo/logo-2.svg')" alt="Logo" />
+          <img :src="url('public/static/images/brand/logo/logo-2.svg')" alt="Logo" />
         </a>
 
         <a id="nav-toggle" href="#" class="ms-auto ms-md-0 me-0 me-lg-3">
@@ -50,19 +50,6 @@
 
         <ul class="navbar-nav navbar-right-wrap ms-lg-auto d-flex nav-top-wrap align-items-center ms-4 ms-lg-0">
           <li class="dropdown stopevent ms-2">
-            <a href="#" class="form-check form-switch theme-switch btn btn-ghost btn-icon rounded-circle mb-0">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="flexSwitchCheckDefault"
-                role="switch"
-                aria-checked="false"
-              />
-              <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-            </a>
-          </li>
-
-          <li class="dropdown stopevent ms-2">
             <a
               class="btn btn-ghost btn-icon rounded-circle"
               href="#!"
@@ -72,7 +59,7 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i class="mdi mdi-bell-outline text-base"></i>
+              <i class="mdi mdi-bell-outline text-[22px]"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" aria-labelledby="dropdownNotification">
               <div>
@@ -117,7 +104,7 @@
                   </ul>
                 </div>
                 <div class="border-top px-3 py-2 text-center">
-                  <a href="#!" class="text-inherit"> View all Notifications </a>
+                  <a href="#!" class="text-inherit">Voir les notifications</a>
                 </div>
               </div>
             </div>
@@ -139,31 +126,36 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
               <div class="px-4 pb-0 pt-2">
                 <div class="lh-1">
-                  <h5 class="mb-1">John E. Grainger</h5>
-                  <a href="#" class="text-inherit fs-6">View my profile</a>
+                  <h5 class="mb-1">{{ user.name }}</h5>
+                  <Link href="#" class="text-inherit fs-6">Voir mom profil</Link>
                 </div>
                 <div class="dropdown-divider mt-3 mb-2"></div>
               </div>
               <ul class="list-unstyled">
                 <li>
-                  <a class="dropdown-item" href="#">
-                    <i class="mdi mdi-account me-2 dropdown-item-icon"></i>Edit Profile
-                  </a>
+                  <Link class="dropdown-item" :href="route('profile')">
+                    <i class="mdi mdi-account me-2 dropdown-item-icon"></i>Mon Profil
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
-                    <i class="mdi mdi-history me-2 dropdown-item-icon"></i>Historique d'activité
-                  </a>
+                  <Link class="dropdown-item" :href="route('profile.activities')">
+                    <i class="mdi mdi-history me-2 dropdown-item-icon"></i>Historique d'activités
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <Link class="dropdown-item" :href="route('profile.security')">
+                    <i class="mdi mdi-security me-2 dropdown-item-icon"></i>Sécurité
+                  </Link>
+                </li>
+                <li>
+                  <Link class="dropdown-item" :href="route('profile.settings')">
                     <i class="mdi mdi-cog-outline me-2 dropdown-item-icon"></i>Paramètres
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <Link :href="route('logout')" as="button" method="post" class="dropdown-item">
                     <i class="mdi mdi-logout me-2 dropdown-item-icon"></i>Déconnexion
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -175,5 +167,9 @@
 </template>
 
 <script setup lang="ts">
+import { Link, usePage } from "@inertiajs/vue3";
 import { url } from "@/helpers/utils";
+
+const page = usePage();
+const user = page.props.auth.user;
 </script>

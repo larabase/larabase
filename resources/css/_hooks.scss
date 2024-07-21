@@ -1,3 +1,13 @@
+.navbar-vertical .navbar-nav .nav-icon {
+  font-size: 20px;
+  line-height: 1;
+
+  *::before {
+    font-size: inherit;
+    line-height: 1;
+  }
+}
+
 .form-control {
   -webkit-appearance: none;
   -moz-appearance: none;

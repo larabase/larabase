@@ -15,12 +15,12 @@
 
     <!-- Libs CSS -->
     <link href="{{ asset('static/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('static/libs/%40mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/libs/@mdi/css/materialdesignicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('static/libs/simplebar/dist/simplebar.min.css') }}" rel="stylesheet">
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('static/css/theme.min.css') }}">
-
+    @routes
     @vite('resources/js/app.ts')
     @inertiaHead
 </head>

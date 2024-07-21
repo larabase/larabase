@@ -11,11 +11,12 @@
           <p class="mb-6">Please enter your user information.</p>
         </div>
         <!-- Form -->
-        <form>
+        <form @submit.prevent="submit">
           <!-- Username -->
           <div class="mb-3">
             <label for="email" class="form-label">Username or email</label>
             <input
+              v-model="form.email"
               type="email"
               id="email"
               class="form-control"
@@ -23,11 +24,13 @@
               placeholder="Email address here"
               required
             />
+            <InputError class="mt-2" :message="form.errors.email" />
           </div>
           <!-- Password -->
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input
+              v-model="form.password"
               type="password"
               id="password"
               class="form-control"
@@ -35,12 +38,13 @@
               placeholder="**************"
               required
             />
+            <InputError class="mt-2" :message="form.errors.password" />
           </div>
           <!-- Checkbox -->
           <div class="d-lg-flex justify-content-between align-items-center mb-4">
             <div class="form-check custom-checkbox">
               <input type="checkbox" class="form-check-input" id="rememberme" />
-              <label class="form-check-label" for="rememberme"> Remember me </label>
+              <label class="form-check-label" for="rememberme">Remember me</label>
             </div>
           </div>
           <div>
@@ -65,8 +69,27 @@
 </template>
 
 <script setup lang="ts">
-import { Head } from "@inertiajs/vue3";
+import { Head, useForm } from "@inertiajs/vue3";
 import { url } from "@/helpers/utils";
-
 import Layout from "@/layouts/Auth/Auth.vue";
+import InputError from "@/components/InputError.vue";
+
+defineProps<{
+  canResetPassword?: boolean;
+  status?: string;
+}>();
+
+const form = useForm({
+  email: "admin@djelischool.com",
+  password: "password1234",
+  remember: false,
+});
+
+const submit = () => {
+  form.post(route("login"), {
+    onFinish: () => {
+      form.reset("password");
+    },
+  });
+};
 </script>
